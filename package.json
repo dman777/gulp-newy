@@ -1,0 +1,33 @@
+{
+  "name": "gulp-newy",
+  "version": "1.0.0",
+  "description": "Determines if source file is newer than destination file(if one exists)",
+  "main": "index.js",
+  "dependencies": {
+    "jshint-stylish": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dman777/gulp-newy.git"
+  },
+  "keywords": [
+    "new",
+    "newer",
+    "gulp",
+    "files",
+    "file",
+    "recent",
+    "mtime",
+    "gulpplugin"
+  ],
+  "author": "Darin Hensley (https://github.com/dman777)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dman777/gulp-newy/issues"
+  },
+  "homepage": "https://github.com/dman777/gulp-newy"
+}
