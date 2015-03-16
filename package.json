@@ -2,13 +2,21 @@
   "name": "gulp-newy",
   "version": "1.0.0",
   "description": "Determines if source file is newer than destination file(if one exists)",
-  "main": "index.js",
-  "dependencies": {
-    "jshint-stylish": "^1.0.1"
+  "main": "lib/newy.js",
+  "devDependencies": {
+    "chai": "^2.1.1",
+    "chai-spies": "^0.5.1",
+    "colors": "^1.0.3",
+    "gulp-util": "^3.0.4",
+    "mocha": "^2.2.1",
+    "mock-fs": "^2.5.0",
+    "sinon": "^1.14.0",
+    "sinon-chai": "^2.7.0",
+    "through2": "^0.6.3",
+    "vinyl": "^0.4.6"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -29,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/dman777/gulp-newy/issues"
   },
-  "homepage": "https://github.com/dman777/gulp-newy"
+  "homepage": "https://github.com/dman777/gulp-newy",
+  "dependencies": {
+    "gulp-newy": "git://github.com/dman777/gulp-newy"
+  }
 }
