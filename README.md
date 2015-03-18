@@ -19,7 +19,7 @@ newy(function(projectDir, srcFile, absSrcFile) {
 ```
 
 ## Examples
-Compare css `less` files in `~/github/foo/app/css/*.less` against `~/github/foo/compiled/css/application.css`
+Compare `less` files in `~/github/foo/app/css/*.less` against `~/github/foo/compiled/css/application.css`
 
 ```javascript 
 function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
