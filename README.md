@@ -57,3 +57,11 @@ function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
     destination = destination.substr(0, destination.lastIndexOf(".")) + newSuffix;
     return destination;
 }
+
+gulp.task('compileCoffee', function () {
+    return gulp.src('app/js/**/*.coffee')
+          .pipe(newy(coffeeVersusJs))
+          .pipe(coffee({bare: true}))
+          .pipe(gulp.dest('compiled/js"));
+});
+```
