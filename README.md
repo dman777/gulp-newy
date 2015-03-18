@@ -19,6 +19,7 @@ newy(function(projectDir, srcFile, absSrcFile) {
 ```
 
 ### Example Callback Functions
+-------------------------------------------------------------------------
 Compare `less` files in `/home/one/github/foo/app/css/*.less` against `/home/one/github/foo/compiled/css/application.css`
 
 ```javascript 
@@ -31,7 +32,7 @@ function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
     return destination;
 }
 // all *.less files will be compared against
-// /home/one/github/load-balancer-service/compiled/css/application.css
+// /home/one/github/foo/compiled/css/application.css
 
 gulp.task('compileLessToCss', function () {
     return gulp.src('app/css/**/*.less')
@@ -39,4 +40,20 @@ gulp.task('compileLessToCss', function () {
         .pipe(less())
         .pipe(gulp.dest('compiled/css'));
 ```
+------------------------------------------------------------------------
+Compare `coffee` script files in `/home/one/github/foo/app/js/*.coffee` against
+compiled `Javascript` files in `/home/one/github/foo/compiled/js/*.js`
+* note: child directories and files will be globed with no issues
 
+```javascript 
+function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
+    var stripPath = "app";
+    var destDir = "compiled";
+    var newSuffix = ".js"
+
+    var re = new RegExp("^\/.*"+stripPath+"\/");
+    var relativeSourceFile = absSrcFile.replace(re, "");
+    var destination = path.join(projectDir, destDir, relativeSourceFile);
+    destination = destination.substr(0, destination.lastIndexOf(".")) + newSuffix;
+    return destination;
+}
