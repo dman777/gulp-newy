@@ -38,4 +38,7 @@
     "url": "https://github.com/dman777/gulp-newy/issues"
   },
   "homepage": "https://github.com/dman777/gulp-newy",
+  "dependencies": {
+      "gulp-newy": "git://github.com/dman777/gulp-newy"
+  }
 }
