@@ -19,11 +19,11 @@ newy(function(projectDir, srcFile, absSrcFile) {
 ```
 
 ## Examples
-Compare `less` files in `~/github/foo/app/css/*.less` against `~/github/foo/compiled/css/application.css`
+Compare `less` files in `/home/one/github/foo/app/css/*.less` against `/home/one/github/foo/compiled/css/application.css`
 
 ```javascript 
 function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
-    var destDir = "compiled";
+    //newy gives projectDir arg wich is '/home/one/github/foo/`
     var compareFileAgainst = "compiled/css/application.css";
 
     var destination = path.join(projectDir, compareFileAgainst);
@@ -34,9 +34,9 @@ function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
 // home/one/github/load-balancer-service/compiled/css/application.css
 
 gulp.task('compileLessToCss', function () {
-    return gulp.src(srcPath + '/css/**/*.less')
+    return gulp.src('app/css/**/*.less')
         .pipe(newy(lessVersusOneFile))
         .pipe(less())
-        .pipe(gulp.dest(compilePath + '/css'));
+        .pipe(gulp.dest('compiled/css'));
 ```
 
