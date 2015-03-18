@@ -55,6 +55,9 @@ function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
     var relativeSourceFile = absSrcFile.replace(re, "");
     var destination = path.join(projectDir, destDir, relativeSourceFile);
     destination = destination.substr(0, destination.lastIndexOf(".")) + newSuffix;
+    // srcFile is error.service.coffee
+    // destination returned is 
+    // /home/one/github/foo/compiled/js/fooBar/services/error-services/error.service.js
     return destination;
 }
 
