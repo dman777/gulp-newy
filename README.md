@@ -1,7 +1,7 @@
-###gulp-newy
+####gulp-newy
 Gulp plugin which determines if source file is newer than destination file
 
-##Usage
+###Usage
 
 ```javascript
 var newy = require('gulp-newy');
@@ -18,7 +18,7 @@ newy(function(projectDir, srcFile, absSrcFile) {
 })
 ```
 
-## Example Callback Functions
+### Example Callback Functions
 Compare `less` files in `/home/one/github/foo/app/css/*.less` against `/home/one/github/foo/compiled/css/application.css`
 
 ```javascript 
