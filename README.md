@@ -18,7 +18,7 @@ newy(function(projectDir, srcFile, absSrcFile) {
 })
 ```
 
-## Examples
+## Example Callback Functions
 Compare `less` files in `/home/one/github/foo/app/css/*.less` against `/home/one/github/foo/compiled/css/application.css`
 
 ```javascript 
@@ -31,7 +31,7 @@ function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
     return destination;
 }
 // all *.less files will be compared against
-// home/one/github/load-balancer-service/compiled/css/application.css
+// /home/one/github/load-balancer-service/compiled/css/application.css
 
 gulp.task('compileLessToCss', function () {
     return gulp.src('app/css/**/*.less')
