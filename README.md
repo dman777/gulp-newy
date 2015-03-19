@@ -1,5 +1,8 @@
+![alt text](https://raw.githubusercontent.com/dman777/icons/master/npm.jpg)
 #### gulp-newy
 Gulp plugin which determines if source file is newer than destination file
+
+![alt text](https://raw.githubusercontent.com/dman777/icons/master/gulp-newy.jpg)
 
 ### Usage
 
