@@ -23,7 +23,7 @@ newy(function(projectDir, srcFile, absSrcFile) {
 
 ### Example Callback Functions
 -------------------------------------------------------------------------
-Compare `less` files in `/home/one/github/foo/app/css/*.less` against `/home/one/github/foo/compiled/css/application.css`
+Compare `less` files in `/home/one/github/foo/app/css/*.less` against single file `/home/one/github/foo/compiled/css/application.css`
 
 ```javascript 
 function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
