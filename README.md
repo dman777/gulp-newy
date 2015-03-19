@@ -64,7 +64,7 @@ function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
     return destination;
 }
 
-gulp.task('compileCoffee', function () {
+gulp.task('compile-coffee', function () {
     return gulp.src('app/js/**/*.coffee')
           .pipe(newy(coffeeVersusJs))
           .pipe(coffee({bare: true}))
