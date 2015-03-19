@@ -84,5 +84,6 @@ gulp.task('compile-coffee', function () {
   Think about this stream as a gas pump filling your car....do you want a steady stream or do you want a bottle neck of operation end results all released at once which will still end up a steady stream? 
 * Why aren't you using node `process.nextTick` or `setImmediate` for async-like behavior? 
   The majority of operations here are I/O operations. This means they are natively non-blocking. Using these apis   would only gaurantee that each job runs next in the event queue...which is unnecessary. If you really wanted to set this behavior, it can be done in the gulp wraped task. 
+* What does all this mean? A code free of overhead software gives you less issues and bugs. Think of food that is orgranic and more healthy.  
 
 
