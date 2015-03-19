@@ -81,7 +81,7 @@ gulp.task('compile-coffee', function () {
 * Why doesn't this module use promises?
   Promises are simply not needed in this case and to use them adds unnecessary overhead.
 * Why aren't you using batch style operations? 
-  It is not needed in this use case. Think about this stream as a gas pump filling your car....do you want a steady stream or do you want a bottle neck of operation end results all released at once which will still end up a steady stream? 
+  Think about this stream as a gas pump filling your car....do you want a steady stream or do you want a bottle neck of operation end results all released at once which will still end up a steady stream? 
 * Why aren't you using node `process.nextTick` or `setImmediate` for async-like behavior? 
   The majority of operations here are I/O operations. This means they are natively non-blocking. Using these apis   would only gaurantee that each job runs next in the event queue...which is unnecessary. If you really wanted to set this behavior, it can be done in the gulp wraped task. 
 
