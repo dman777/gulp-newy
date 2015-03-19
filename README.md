@@ -73,7 +73,7 @@ gulp.task('compile-coffee', function () {
 ```
 ---------------------------------------------------------------------------------------
 ### Faqs
-* if there is no destination file, newy will automatically count file as new and pipe it through as any other file that is newer
+* If there is no destination file, newy will automatically count file as new and pipe it through as any other file that is newer
 
 ### Notes
 * What doesn't newy use options instead of a callback? 
@@ -82,8 +82,7 @@ gulp.task('compile-coffee', function () {
   Promises are simply not needed in this case and to use them adds unnecessary overhead.
 * Why aren't you using batch style operations? 
   It is not needed in this use case. Think about this stream as a gas pump filling your car....do you want a steady stream or do you want a bottle neck of operation end results all released at once which will still end up a steady stream? 
-* Why aren't you using node `process.nextTick` or ` 
-  The majority of operations here are I/O operations. This means they are natively non-blocking. 
+* Why aren't you using node `process.nextTick` or `setImmediate` for async-like behavior? 
+  The majority of operations here are I/O operations. This means they are natively non-blocking. Using these apis   would only gaurantee that each job runs next in the event queue...which is unnecessary. If you really wanted to set this behavior, it can be done in the gulp wraped task. 
 
 
-  Because of the non blocking nature of I/O opeations(in this case hitting the filesystem to check mtime), it is non blocking. 
