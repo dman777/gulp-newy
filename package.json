@@ -1,7 +1,7 @@
 {
   "name": "gulp-newy",
-  "version": "1.0.2",
-  "description": "Determines if source file is newer than destination file(if one exists)",
+  "version": "1.0.3",
+  "description": "Determines if source file is newer than destination file(or if one exists)",
   "main": "lib/newy.js",
   "devDependencies": {
     "chai": "^2.1.1",
