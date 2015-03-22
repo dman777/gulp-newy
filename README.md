@@ -46,6 +46,7 @@ gulp.task('compileLessToCss', function () {
         .pipe(newy(lessVersusOneFile))
         .pipe(less())
         .pipe(gulp.dest('compiled/css'));
+});
 ```
 ------------------------------------------------------------------------
 Compare `coffee` script files in `/home/one/github/foo/app/js/*.coffee` against
