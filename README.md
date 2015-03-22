@@ -73,7 +73,7 @@ gulp.task('compile-coffee', function () {
     return gulp.src('app/js/**/*.coffee')
           .pipe(newy(coffeeVersusJs))
           .pipe(coffee({bare: true}))
-          .pipe(gulp.dest('compiled/js"));
+          .pipe(gulp.dest('compiled/js'));
 });
 ```
 ---------------------------------------------------------------------------------------
