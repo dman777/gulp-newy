@@ -1,6 +1,6 @@
 {
   "name": "gulp-newy",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Determines if source file is newer than destination file(or if one exists)",
   "main": "lib/newy.js",
   "devDependencies": {
