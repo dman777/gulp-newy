@@ -14,7 +14,7 @@ Gulp plugin which determines if source file is newer than destination file. Usin
 var newy = require('gulp-newy');
 
 newy(function(projectDir, srcFile, absSrcFile) {
-    // do your logic here to set the destination 
+    // do your logic here to set and return the destination 
     // file which to compare against.
     
    // newy hands you the project directory, source file,
@@ -23,6 +23,13 @@ newy(function(projectDir, srcFile, absSrcFile) {
    
    // cut and paste callback function in examples for ease
 })
+```
+### Result
+-------------------------------------------------------------------------
+```
+-------------------- Newy Message ------------------
+File [source filename] is new/newer then [destination filename returned from your callback]
+----------------------------------------------------
 ```
 
 ### Example Callback Functions
@@ -37,9 +44,9 @@ function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
     //newy gives projectDir arg wich is '/home/one/github/foo/`
     var compareFileAgainst = "compiled/css/application.css";
 
-    var destination = path.join(projectDir, compareFileAgainst);
-    // distination returned will be /home/one/github/foo/compiled/css/application.css
-    return destination;
+    var destinationFile = path.join(projectDir, compareFileAgainst);
+    // distinationFile returned will be /home/one/github/foo/compiled/css/application.css
+    return destinationFile;
 }
 // all *.less files will be compared against
 // /home/one/github/foo/compiled/css/application.css
@@ -67,12 +74,12 @@ function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
 
     var re = new RegExp("^\/.*"+stripPath+"\/");
     var relativeSourceFile = absSrcFile.replace(re, "");
-    var destination = path.join(projectDir, destDir, relativeSourceFile);
-    destination = destination.substr(0, destination.lastIndexOf(".")) + newSuffix;
+    var destinationFile = path.join(projectDir, destDir, relativeSourceFile);
+    destinationFile = destination.substr(0, destination.lastIndexOf(".")) + newSuffix;
     // srcFile is error.service.coffee
-    // destination returned is 
+    // destination file returned is 
     // /home/one/github/foo/compiled/js/fooBar/services/error-services/error.service.js
-    return destination;
+    return destinationFile;
 }
 
 gulp.task('compile-coffee', function () {
