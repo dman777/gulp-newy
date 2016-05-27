@@ -30,6 +30,9 @@ newy(function(projectDir, srcFile, absSrcFile) {
 Compare `less` files in `/home/one/github/foo/app/css/*.less` against single file `/home/one/github/foo/compiled/css/application.css`
 
 ```javascript 
+var newy = require('gulp-newy');
+var path = require('path');
+
 function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
     //newy gives projectDir arg wich is '/home/one/github/foo/`
     var compareFileAgainst = "compiled/css/application.css";
@@ -54,9 +57,12 @@ compiled `Javascript` files in `/home/one/github/foo/compiled/js/*.js`
 * note: child directories and files will be globed with no issues
 
 ```javascript 
+var newy = require('gulp-newy');
+var path = require('path');
+
 function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
     var stripPath = "app";
-    var destDir = "compiled";
+    var destDir = "compiled/js";
     var newSuffix = ".js"
 
     var re = new RegExp("^\/.*"+stripPath+"\/");
@@ -78,11 +84,11 @@ gulp.task('compile-coffee', function () {
 ```
 ---------------------------------------------------------------------------------------
 ### Faqs
-* If there is no destination file, newy will automatically count file as new and pipe it through as any other file that is newer
+* If there is no destination file, gulp-newy will automatically count file as new and pipe it through as any other file that is newer
 
 ### Notes
-* What doesn't newy use options instead of a callback? 
-  Because 'one size does not fit all'. I have found with other types of modules of the same type I was restricted and could not do what I needed.
+* Why doesn't gulp-newy use options instead of a callback? 
+  Because 'one size does not fit all'. I have found with other modules of the same type I was restricted and could not do what I needed.
 * Why doesn't this module use promises?
   Promises are simply not needed in this case and to use them adds unnecessary overhead.
 * Why aren't you using batch style operations? 
@@ -90,5 +96,4 @@ gulp.task('compile-coffee', function () {
 * Why aren't you using node `process.nextTick` or `setImmediate` for async-like behavior? 
   The majority of operations here are I/O operations. This means they are natively non-blocking. Using these apis   would only gaurantee that each job runs next in the event queue...which is unnecessary. If you really wanted to set this behavior, it can be done in the gulp wraped task. 
 * What does all this mean? A code free of overhead software gives you less issues and bugs. Think of food that is orgranic and more healthy.  
-
 

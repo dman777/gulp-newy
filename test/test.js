@@ -5,8 +5,6 @@ var newy = require('../lib/newy');
 var mock = require('mock-fs');
 var sinon = require('sinon');
 var sinonChai = require("sinon-chai");
-//var rewire = require("rewire");
-//var myModule = rewire("./test.js");
 var sandbox;
 
 chai.should();
@@ -17,17 +15,6 @@ describe('gulp-newy', function() {
     var fakeFile, pspy;
 
     beforeEach(function() {
-        //myModule.__set__('__dirname', "/home/one");
-        mock({
-            __dirname: mock.directory({
-                mode: 0755,
-                items: {
-                file1: 'file one content',
-                file2: new Buffer([8, 6, 7, 5, 3, 0, 9])
-                }
-            })
-        });
-
         mock({
             foo: mock.file({
             content: 'nothing',
@@ -55,45 +42,46 @@ describe('gulp-newy', function() {
     });
 
     describe('get files', function() {
-        it('it should console out to show foo is newer than bar',
+        it('it should console out to show file foo is newer than file bar',
             function(done) {
                var bar = function(dest) { return 'bar' };
-               spy1 = sandbox.spy(console, "log");
-               stream = newy(bar);
+               var spy1 = sandbox.spy(console, "log");
+               var stream = newy(bar);
                stream.write(fakeFile);
                spy1.should.have.been.calledThrice;
                done();
         });
 
-        it('it should emit a data event because foo is newer than bar', 
+        it('it should emit a data event because file foo is newer than file bar',
             function(done) {
                var bar = function(dest) { return 'bar' };
-               stream = newy(bar);
+               var stream = newy(bar);
                stream.write(fakeFile);
-               spyEvent = sandbox.spy();
+               var spyEvent = sandbox.spy();
                stream.on('data', spyEvent);
                spyEvent.should.have.been.called;
                done();
-            });
+        });
 
-        it('it should NOT console out since foo is not newer than foo',
+        it('it should NOT console out since file foo is not newer than file foo',
             function(done) {
                var bar = function(dest) { return 'foo' };
-               spy1 = sandbox.spy(console, "log");
-               stream = newy(bar);
+               var spy1 = sandbox.spy(console, "log");
+               var stream = newy(bar);
                stream.write(fakeFile);
                spy1.should.not.have.been.calledThrice;
                done();
         });
-        it('it should NOT emit a data event because foo is NOT newer than foo', 
+        it('it should NOT emit a data event because file foo is NOT' +
+           ' newer than file foo', 
             function(done) {
                var bar = function(dest) { return 'foo' };
-               stream = newy(bar);
+               var stream = newy(bar);
                stream.write(fakeFile);
-               spyEvent = sandbox.spy();
+               var spyEvent = sandbox.spy();
                stream.on('data', spyEvent);
                spyEvent.should.not.have.been.called;
                done();
-            });
+        });
     });
 });
