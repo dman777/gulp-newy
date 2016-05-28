@@ -25,12 +25,14 @@ newy(function(projectDir, srcFile, absSrcFile) {
 })
 ```
 ### Result
--------------------------------------------------------------------------
 ```
 -------------------- Newy Message ------------------
 File [source filename] is new/newer then [destination filename returned from your callback]
 ----------------------------------------------------
 ```
+### Troubleshooting and Faqs
+* If you get a `false` in `File [source filename] is new/newer then false`, this will be because there is a missing directory in the destination filename path. Double check the value that is being returned in your callback function.  
+* If there is no destination file, Newy will automatically count file as new and pipe it through as any other file that is newer. This is only when all directories exist. Newy can not create new directories. 
 
 ### Example Callback Functions
 -------------------------------------------------------------------------
@@ -58,7 +60,7 @@ gulp.task('compileLessToCss', function () {
         .pipe(gulp.dest('compiled/css'));
 });
 ```
-------------------------------------------------------------------------
+-------------------------------------------------------------------------
 Compare `coffee` script files in `/home/one/github/foo/app/js/*.coffee` against
 compiled `Javascript` files in `/home/one/github/foo/compiled/js/*.js`
 * note: child directories and files will be globed with no issues
@@ -90,10 +92,6 @@ gulp.task('compile-coffee', function () {
 });
 ```
 ---------------------------------------------------------------------------------------
-### Troubleshooting and Faqs
-* If you get a `false` in `File [source filename] is new/newer then false`, this will be because there is a missing directory in the destination filename path. Double check the value that is being returned in your callback function.  
-* If there is no destination file, gulp-newy will automatically count file as new and pipe it through as any other file that is newer. This is only when all directories exist. Newy can not create new directories. 
-
 ### Notes
 * Why doesn't gulp-newy use options instead of a callback? 
   Because 'one size does not fit all'. I have found with other modules of the same type I was restricted and could not do what I needed.
