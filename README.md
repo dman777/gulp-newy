@@ -90,8 +90,9 @@ gulp.task('compile-coffee', function () {
 });
 ```
 ---------------------------------------------------------------------------------------
-### Faqs
-* If there is no destination file, gulp-newy will automatically count file as new and pipe it through as any other file that is newer
+### Troubleshooting and Faqs
+* If you get a `false` in `File [source filename] is new/newer then false`, this will be because there is a missing directory in the destination filename path. Double check the value that is being returned in your callback function.  
+* If there is no destination file, gulp-newy will automatically count file as new and pipe it through as any other file that is newer. This is only when all directories exist. Newy can not create new directories. 
 
 ### Notes
 * Why doesn't gulp-newy use options instead of a callback? 
