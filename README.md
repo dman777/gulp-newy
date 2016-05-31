@@ -14,14 +14,15 @@ Gulp plugin which determines if source file is newer than destination file. Usin
 var newy = require('gulp-newy');
 
 newy(function(projectDir, srcFile, absSrcFile) {
-    // do your logic here to set and return the destination 
-    // file which to compare against.
     
-   // newy hands you the project directory, source file,
-   // and source file with aboslute path as the args in the
-   // call back function.
+   // Newy hands you the project directory, source file,
+   // and source file with aboslute path as the args.
    
-   // cut and paste callback function in examples for ease
+   // You can build, construct, and mutate the absolute 
+   // path and filename with the args. 
+   // Return your new destination file with absolute path. 
+
+   // Cut and paste callback function in examples for ease.
 })
 ```
 ### Result
@@ -30,9 +31,9 @@ newy(function(projectDir, srcFile, absSrcFile) {
 File [source filename] is new/newer then [destination filename returned from your callback]
 ----------------------------------------------------
 ```
-### Troubleshooting and Faqs
-* If you get a `false` in `File [source filename] is new/newer then false`, this will be because the file destination path contains a directory that does not exist on your system. Double check the value that you are returning in your callback function.  
-* If there is no destination file, Newy will automatically count file as new and pipe it through as any other file that is newer. This is only when all directories in path actually exist on your system(see first bullet above). 
+### Faqs
+* It's ok if directory in the absolute path doesn't exist, but newy will let you know as a courtesy warning in case it was unintentional. 
+* If there is no destination file, Newy will automatically count file as new and pipe it through as any other file that is newer.
 
 ### Example Callback Functions
 -------------------------------------------------------------------------
@@ -43,11 +44,12 @@ var newy = require('gulp-newy');
 var path = require('path');
 
 function lessVersusOneFile(projectDir, srcFile, absSrcFile) {
-    //newy gives projectDir arg wich is '/home/one/github/foo/`
+    // Newy gives projectDir arg wich is '/home/one/github/foo/`
     var compareFileAgainst = "compiled/css/application.css";
 
     var destinationFile = path.join(projectDir, compareFileAgainst);
     // distinationFile returned will be /home/one/github/foo/compiled/css/application.css
+
     return destinationFile;
 }
 // all *.less files will be compared against
@@ -77,10 +79,12 @@ function coffeeVersusJs(projectDir, srcFile, absSrcFile) {
     var re = new RegExp("^\/.*"+stripPath+"\/");
     var relativeSourceFile = absSrcFile.replace(re, "");
     var destinationFile = path.join(projectDir, destDir, relativeSourceFile);
+
     destinationFile = destination.substr(0, destination.lastIndexOf(".")) + newSuffix;
     // srcFile is error.service.coffee
     // destination file returned is 
     // /home/one/github/foo/compiled/js/fooBar/services/error-services/error.service.js
+    
     return destinationFile;
 }
 
@@ -95,8 +99,6 @@ gulp.task('compile-coffee', function () {
 ### Notes
 * Why doesn't gulp-newy use options instead of a callback? 
   Because 'one size does not fit all'. I have found with other modules of the same type I was restricted and could not do what I needed.
-* Why doesn't this module use promises?
-  Promises are simply not needed in this case and to use them adds unnecessary overhead.
 * Why aren't you using batch style operations? 
   Think about this stream as a gas pump filling your car....do you want a steady stream or do you want a bottle neck of operation end results all released at once which will still end up a steady stream? 
 * Why aren't you using node `process.nextTick` or `setImmediate` for async-like behavior? 
