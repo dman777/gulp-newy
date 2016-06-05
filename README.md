@@ -95,7 +95,7 @@ gulp.task('compile-coffee', function () {
 });
 ```
 ---------------------------------------------------------------------------------------
-### Faqs
+### FAQs
 * It's ok if directory in the absolute path doesn't exist, but newy will let you know as a courtesy warning in case it was unintentional. 
 * If there is no destination file, newy will automatically count file as new and pipe it through as any other file that is newer.
 * Always be sure to return the destination file with a absolute path, not a relative path. `projectDir` is given to you for this.  

@@ -1,6 +1,6 @@
 {
   "name": "gulp-newy",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Determines if source file is newer than destination file(or if one exists)",
   "main": "lib/newy.js",
   "devDependencies": {
@@ -39,5 +39,5 @@
   "bugs": {
     "url": "https://github.com/dman777/gulp-newy/issues"
   },
-  "homepage": "https://github.com/dman777/gulp-newy"
+  "homepage": "http://gulp-newy.com"
 }
